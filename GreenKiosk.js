@@ -1,3 +1,5 @@
+
+
 let products = [
     {
         name: 'Mangoes',
@@ -50,8 +52,8 @@ let products = [
     }
     return products;
     }
-    
-    GreensKiosk = {
+
+    let GreensKiosk = {
     getItems: getItems
     };
     

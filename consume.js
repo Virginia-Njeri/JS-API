@@ -1,19 +1,25 @@
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args))
+;
+        
+var product_list = function products(){
 
-fetch('localhost:5000/products')
-   
-.then(function (response) {
-return response.json();
-})
-.then(function (data) {
-console.log('success', data);git 
-})
-
-
+    fetch('localhost:5000/products')
+.then((response)=>response.json())
+.then((products_data)=>products_data)
+}
+products()
+// fetch('localhost:5000/products')
+// .then((response)=>response.json())
+// .then((products_data)=>products_data)
 
 
 fetch('localhost:5000/products/fruits')
 .then((response)=> response.json())
-let fruitsCategory = products.find(product.category == 'fruits')
- return fruitsCategory
-.then ((fruitsCategory) => console.log(fruitsCategory))
+.then ((fruitData) =>fruitData)
+
+
+fetch('localhost:5000/products/vegetables')
+.then((response)=> response.json())
+.then ((fruitData) =>fruitData)
+
+

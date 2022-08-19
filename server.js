@@ -1,60 +1,23 @@
 
 var http = require('http');
- var GreensKiosk =[
-  {
-      name: 'Mangoes',
-      category: 'fruits'
-  },
-  {
-      name: 'Apples',
-      category: 'fruits'
-  },
-  {
-      name: 'Bananas',
-      category: 'fruits'
-  },
-  {
-      name: 'Oranges',
-      category: 'fruits'
-  },
-  {
-      name: 'Grapes',
-      category: 'fruits'
-  },
-  {
-      name: 'Kales',
-      category: 'vegetables'
-  },
-  {
-      name: 'Onions',
-      category: 'vegetables'
-  },
-  {
-      name: 'Tomatoes',
-      category: 'vegetables'
-  },
-  {
-      name: 'Cabbages',
-      category: 'vegetables'
-  },
-  {
-      name: 'Spinach',
-      category: 'vegetables'
-  },
-  ];
+var GreensKiosk = require('./GreenKiosk')
 
 
-var server = http.createServer(function (req, res) {   // create web server
+
+var server = http.createServer((req, res)=> {   // create web server
 
   // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', '*');//permissons controls
   res.setHeader('Access-Control-Request-Method', '*');
   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
   res.setHeader('Access-Control-Allow-Headers', '*');
   if (req.method === 'OPTIONS') {
-    res.writeHead(200);
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('<html><body><p>options API.</p></body></html>');
     res.end();
-    return;
+
+    // return 
+
   }
 
   if (req.url == '/') { // check the URL of the current request
@@ -63,6 +26,7 @@ var server = http.createServer(function (req, res) {   // create web server
     // set response content
     res.write('<html><body><p>Greens Kiosk API.</p></body></html>');
     res.end();
+
   }
   else if (req.url == "/products") { // check the URL of the current request
     res.writeHead(200, { 'Content-Type': 'application/json' });
