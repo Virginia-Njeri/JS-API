@@ -20,6 +20,6 @@ fetch('localhost:5000/products/fruits')
 
 fetch('localhost:5000/products/vegetables')
 .then((response)=> response.json())
-.then ((fruitData) =>fruitData)
+.then ((vegetablesData) =>vegetablesData)
 
 
