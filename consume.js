@@ -1,25 +1,27 @@
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args))
-;
+// const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args))
+// ;
+const productApi = axios.create({
+    baseURL:"http://localhost:5000/"
+})
         
-var product_list = function products(){
+export var product_list = async ()=>{
+    const response = await productApi.get("/products")
+    return response.data
 
-    fetch('localhost:5000/products')
-.then((response)=>response.json())
-.then((products_data)=>products_data)
+ }
+
+
+export var fruit_list = async ()=>{
+    const response = await productApi.get("/products/fruits")
+    return response.data
+
 }
-products()
-// fetch('localhost:5000/products')
-// .then((response)=>response.json())
-// .then((products_data)=>products_data)
 
+export var vegetable_list = async()=>{
+    const response = await productApi.get("/products/vegetables")
+    return response.data
 
-fetch('localhost:5000/products/fruits')
-.then((response)=> response.json())
-.then ((fruitData) =>fruitData)
+}
 
-
-fetch('localhost:5000/products/vegetables')
-.then((response)=> response.json())
-.then ((vegetablesData) =>vegetablesData)
 
 

@@ -2,6 +2,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
    <title>Greens Kiosk</title>
 </head>
 <body>
@@ -13,12 +15,52 @@
        
    </ul>
    <h3>Fruits</h3>
-   <ul id="fruList">
+   <ul id="fruitList">
        <!-- Show fruits from API -->
    </ul>
    <h3>Vegetables</h3>
    <ul id="vegList">
        <!-- Show vegetables from API -->
    </ul>
+   <script type="module">
+    console.log("fruits")
+    import {product_list,fruit_list,vegetable_list} from"./consume.js"
+    const all_products = await product_list()
+    console.log(all_products)
+
+    const all_vegetables = await vegetable_list()
+    console.log(all_vegetables)
+    const vegieList=document.getElementById("vegList")
+
+    all_vegetables.map(vegies =>{
+        const vegieListItem = document.createElement("li")
+        vegieListItem.innerText = vegies.name
+        vegieList.appendChild(vegieListItem)
+
+
+
+    })
+
+
+    // all_fruits.map(fruit => {
+    //   const fruitListItem=document.createElement("li")
+    //   fruitListItem.innerText = fruit.name
+    //   fruitList.appendChild(fruitListItem)
+    // })
+
+
+  const all_fruits = await fruit_list()
+    console.log(all_fruits)
+    const fruitList=document.getElementById("fruitList")
+    
+    all_fruits.map(fruit => {
+      const fruitListItem=document.createElement("li")
+      fruitListItem.innerText = fruit.name
+      fruitList.appendChild(fruitListItem)
+    })
+    
+
+    
+   </script>
 </body>
 </html
